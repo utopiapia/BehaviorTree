@@ -19,7 +19,7 @@ public abstract class BTTree : MonoBehaviour {
 	[HideInInspector]
 	public bool isRunning = true;
 
-	public const string RESET = "Rest";
+	public const string RESET = "Reset";
 	private static int _resetId;
 
 

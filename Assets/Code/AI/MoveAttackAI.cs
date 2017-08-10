@@ -42,7 +42,7 @@ public class MoveAttackAI : BTTree {
 			run.AddChild(new PlayAnimation(RUN_ANIMATION));
 		}
 
-		FindEscapeDestination findDestination = new FindEscapeDestination(ORC_NAME, DESTINATION, sightForOrc);
+		FindEscapeDestination findEscapeDestination = new FindEscapeDestination(ORC_NAME, DESTINATION, sightForOrc);
 		FindToTargetDestination findToTargetDestination = new FindToTargetDestination(GOBLIN_NAME, DESTINATION, fightDistance * 0.9f);
 
 		
@@ -54,7 +54,7 @@ public class MoveAttackAI : BTTree {
 		// "Or" means the parallel node ends when any of its children ends.
 		BTParallel escape = new BTParallel(BTParallel.ParallelFunction.Or, checkOrcInSight);
 		{
-			escape.AddChild(findDestination);
+			escape.AddChild(findEscapeDestination);
 
 			escape.AddChild(run);
 		}

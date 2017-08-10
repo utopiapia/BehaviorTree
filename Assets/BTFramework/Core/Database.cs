@@ -29,9 +29,17 @@ public class Database : MonoBehaviour {
 
 	// Should use this function to get data!
 	public T GetData<T> (int dataId) {
-		if (BT.BTConfiguration.ENABLE_DATABASE_LOG) {
+        if (dataId < 0 || dataId >= _database.Count)
+        {
+            Debug.LogError("Database: Data for " + dataId + " does not exist!");
+            return default(T);
+        }
+
+        if (BT.BTConfiguration.ENABLE_DATABASE_LOG)
+        {
 			Debug.Log("Database: getting data for " + _dataNames[dataId]);
-		}
+		} 
+
 		return (T) _database[dataId];
 	}
 	
